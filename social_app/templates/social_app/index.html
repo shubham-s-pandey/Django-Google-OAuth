@@ -1,0 +1,244 @@
+{% load socialaccount %}
+<html>
+  <head>
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <title>Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* style the container */
+.container {
+  position: relative;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px 0 30px 0;
+  height:auto ;
+
+} 
+
+/* style inputs and link buttons */
+input,
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+}
+
+input:hover,
+.btn:hover {
+  opacity: 1;
+}
+
+/* add appropriate colors to fb, twitter and google buttons */
+
+.google {
+  background-color: #086ef3;
+  background-image: linear-gradient(yellow, orange);
+
+  color: black;
+}
+.googl {
+  background-color: #48ec27;
+  color: black;
+}
+.googlee {
+  background-color: #f30808;
+  color: white;
+}
+.googleee {
+  background-color: #086ef3;
+  color: white;
+}
+
+/* style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Two-column layout */
+.col {
+  float: middle;
+  width: 50%;
+  margin: auto;
+  padding: 0 50px;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-image: linear-gradient(black, rgba(0, 0, 0, 0.705));
+   color: white;
+   text-align: center;
+}
+/* vertical line */
+.vl {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  border: 2px solid #ddd;
+  height: 175px;
+}
+
+/* text inside the vertical line */
+.vl-innertext {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 8px 10px;
+}
+
+/* hide some text on medium and large screens */
+.hide-md-lg {
+  display: none;
+}
+
+/* bottom container */
+.bottom-container {
+  text-align: center;
+  background-color: #666;
+  border-radius: 0px 0px 4px 4px;
+}
+.header {
+  padding: 10px;
+  text-align: center;
+  background: #048bfa;
+  color: white;
+  font-size: 30px;
+
+}
+
+/* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 650px) {
+  .col {
+    width: 100%;
+    margin-top: 0;
+  }
+  /* hide the vertical line */
+  .vl {
+    display: none;
+  }
+  /* show the hidden text on small screens */
+  .hide-md-lg {
+    display: block;
+    text-align: center;
+  }
+}
+</style>
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+                <div class="header">
+                  <h1 style="text-align:center"><i class="fa d-inline fa-lg fa-stop-circle text-light"></i> Google OAuth </h1>
+
+                </div>
+              </i> <p><h1 style="text-align:center">Welcome, {{ user.username }} !</h1></p>
+
+              <div class="row" style="text-align: center;">
+                <div class="col">
+                    <a href="/" class="googleee btn"><i class="fa d-inline fa-lg fa-stop-circle text-light"></i> 
+                     HomePage
+                  </a>
+                </div>
+              
+      
+      <div class="container">
+        <h2 style="text-align:center">Logout OR Change Email address</h2>
+        <form>
+          <div class="row" style="text-align: center;">
+            <div class="col">
+                <a href="/accounts/logout/" class="googlee btn"><i class="fa fa-google fa-fw">
+                </i>Logout
+              </a>
+            </div>
+
+            <div class="col">
+                <a href="/accounts/email/" class="googl btn"><i class="fa fa-google fa-fw">
+                </i>Change your email
+              </a>
+            </div>
+            
+            
+                  </div>
+
+          </div>
+        </form>
+      </div>
+      </div>
+    {% else %}
+    <div class="header">
+      <h1 style="text-align:center"><i class="fa d-inline fa-lg fa-stop-circle text-light"></i> Google OAuth </h1>
+    </div> 
+
+    <div class="container">
+        <form>
+          <div class="row" style="text-align: center;">
+          
+
+              
+            <div class="col">
+                <a href="{% provider_login_url 'google' %}" class="google btn"><i class="fa fa-google fa-fw">
+                </i> Login with Google
+              </a>
+            </div>
+            <div class="col">
+              <a href="/accounts/login/?next=/" class="googleee btn"><i class="fa fa-sign-in fa-fw">
+              </i> Signin/Signup
+            </a>
+          </div>
+            
+            
+          </div>
+        </form>
+      </div>
+
+      </div>
+
+    
+  {% endif %}
+
+
+  
+
+
+
+
+
+
+
+  
+  </body>
+</html>
