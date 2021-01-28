@@ -23,3 +23,7 @@ Back to admin homepage, under “SOCIAL ACCOUNTS” section, click “Social app
     Name: Google API
     Client id: (your OAuth details)
     Secret key: (your OAuth details)
+
+
+Link:
+https://console.developers.google.com/
